@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" th:fragment="html">
+<head th:replace="~{fragments :: head(${title})}"></head>
+<body>
+<header th:replace="~{fragments :: header}"></header>
+
+<main class="container py-4">
+    <!-- Emplacement du contenu spécifique à chaque page -->
+    <div th:insert="~{::content}"></div>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+
+<!-- Bootstrap JS (bundle avec Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
