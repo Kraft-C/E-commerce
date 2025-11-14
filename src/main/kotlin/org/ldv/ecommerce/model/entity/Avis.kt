@@ -7,6 +7,7 @@ class Avis(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     var id: Long?,
 
     var texte: String,

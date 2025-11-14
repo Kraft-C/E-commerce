@@ -3,12 +3,14 @@ package org.ldv.ecommerce.model.entity
 import jakarta.persistence.*
 
 @Entity
-class `Panier`(
+class Utilisateur(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     var id: Long?,
 
-    var total: Double
+    var nom: String,
+    var email: String,
+    var motDePasse: String
 )
