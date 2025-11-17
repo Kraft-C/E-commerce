@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="css-exemple.css">
 <head th:replace="fragments :: head('Exemple')"></head>
 <body>
 <div th:replace="fragments :: header"></div>
@@ -8,6 +9,20 @@
     <h1>Page d'exemple</h1>
     <p>Contenu d'exemple. Modifiez cette page selon vos besoins.</p>
 </main>
+    <div class="carte-container">
+        <div class="carte">
+            <img src="images/mega-absol-ex-meg086.jpg" alt="Mega Absol ex">
+            <div class="nom-carte">Mega Absol ex (MEG 086)</div>
+            <div class="prix">12,50 €</div>
+        </div>
+
+        <div class="carte indisponible">
+            <img src="images/mega-elecsprint-ex-meg050.jpg" alt="Mega Élecsprint ex">
+            <div class="nom-carte">Mega Élecsprint ex (MEG 050)</div>
+            <div class="prix">15,00 €</div>
+        </div>
+    </div>
+
 
 <div th:replace="fragments :: footer"></div>
 </body>

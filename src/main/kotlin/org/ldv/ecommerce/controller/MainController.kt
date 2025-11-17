@@ -1,5 +1,8 @@
+import ch.qos.logback.core.model.Model
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+
+
 
 @Controller
 class MainController {
@@ -27,5 +30,19 @@ class MainController {
 
     @GetMapping("/rgpd")
     fun rgpd(): String = "pagesVisiteur/rgpd"
+
+    @GetMapping("/cartes")
+    fun getCartes(model: Model, produitRepository: Any): String {
+        val produits = produitRepository.findAll()
+        model.addAttribute("produits", produits)
+        return "cartes" // cartes.html
+    }
+
+}
+
+private fun Model.addAttribute(string: String, produits: Any) {}
+
+private fun Any.findAll() {
+    TODO("Not yet implemented")
 }
 
