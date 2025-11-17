@@ -1,14 +1,66 @@
-<!doctype html>
-<html th:replace="base :: html" lang="fr" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::content})}">
+
 <div th:fragment="content">
-    <main class="py-5">
-        <div class="container">
-            <h1 class="mb-5 text-center">Bienvenue sur <strong>E-Commerce</strong></h1>
 
-
-
+    <div class="promo">
+        <div>
+            <h2>Promotions du mois</h2>
+            <p>Jusqu'à -30% sur des séries exclusives.</p>
         </div>
-    </main>
+        <div class="pill">Voir les offres</div>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="thumb">Flammes<br>Fantasmagoriques</div>
+            <h3>Série : Flammes Fantasmagoriques</h3>
+            <p>Cartes & extensions</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Méga<br>Évolution</div>
+            <h3>Série : Méga évolution</h3>
+            <p>Boosters & cartes rares</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Foudre<br>Noir</div>
+            <h3>Série : Foudre Noir</h3>
+            <p>Éditions spéciales</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Flamme<br>Blanche</div>
+            <h3>Série : Flamme blanche</h3>
+            <p>Collection</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Rivalités<br>Destinées</div>
+            <h3>Série : Rivalités destinées</h3>
+            <p>Decks thématiques</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Aventures<br>Ensembles</div>
+            <h3>Série : Aventures ensembles</h3>
+            <p>Sets complets</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Évolutions<br>Prismatiques</div>
+            <h3>Série : Évolutions prismatiques</h3>
+            <p>Holographiques</p>
+        </div>
+
+        <div class="card">
+            <div class="thumb">Étincelles<br>Déferlantes</div>
+            <h3>Série : Étincelles déferlantes</h3>
+            <p>Nouveautés</p>
+        </div>
+    </div>
+
 </div>
 
 </html>

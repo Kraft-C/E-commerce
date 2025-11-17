@@ -1,22 +1,18 @@
 package org.ldv.ecommerce.model.entity
 
 import jakarta.persistence.*
-import java.time.LocalDate
 
 @Entity
-data class Avis(
+data class Panier(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
-    var texte: String,
-    var note: Int,
-    var dateAvis: LocalDate,
+    var total: Double = 0.0,
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "client_id")
     var client: Client? = null,
 
-    @ManyToOne
-    @JoinColumn(name = "produit_id")
-    var produit: Produit? = null
+    @OneToMany(mappedBy = "panier", cascade = [CascadeType.ALL])
+    var lignes: MutableList<LignePanier> = mutableListOf()
 )

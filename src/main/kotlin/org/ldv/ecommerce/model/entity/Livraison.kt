@@ -1,15 +1,17 @@
 package org.ldv.ecommerce.model.entity
 
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
-class Livraison(
+data class Livraison(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    var id: Long?,
+    var dateLivraison: LocalDate,
+    var statutLivraison: String,
 
-    var dateLivraison: java.time.LocalDate,
-    var statutLivraison: String
+    @OneToOne
+    @JoinColumn(name = "commande_id")
+    var commande: Commande? = null
 )

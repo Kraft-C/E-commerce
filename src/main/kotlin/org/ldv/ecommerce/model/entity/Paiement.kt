@@ -1,15 +1,17 @@
 package org.ldv.ecommerce.model.entity
 
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
-class Paiement(
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    var id: Long?,
+data class Paiement(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
 
     var montant: Double,
-    var datePaiement: java.time.LocalDate
+    var datePaiement: LocalDate,
+
+    @OneToOne
+    @JoinColumn(name = "commande_id")
+    var commande: Commande? = null
 )

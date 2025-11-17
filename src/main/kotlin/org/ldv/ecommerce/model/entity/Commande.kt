@@ -1,16 +1,24 @@
 package org.ldv.ecommerce.model.entity
 
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
-class Commande(
+data class Commande(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    var id: Long?,
-
-    var date: java.time.LocalDate,
+    var date: LocalDate,
     var statut: String,
-    var montantTotal: Double
+    var montantTotal: Double,
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    var client: Client? = null,
+
+    @OneToOne(mappedBy = "commande", cascade = [CascadeType.ALL])
+    var paiement: Paiement? = null,
+
+    @OneToOne(mappedBy = "commande", cascade = [CascadeType.ALL])
+    var livraison: Livraison? = null
 )

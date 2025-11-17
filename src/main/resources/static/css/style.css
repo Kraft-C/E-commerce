@@ -1,24 +1,221 @@
-/* Styles globaux */
+/* =============================== */
+/*   PokeCorner - style.css       */
+/*   Thème : Noir / Blanc / Violet */
+/* =============================== */
+
+/* ----------- RESET ----------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-    background-color: #f8f9fa;
+    background: #0d0d0d;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-/* Header */
-header nav a {
-    margin-right: 1rem;
+/* ----------- COULEURS ----------- */
+:root {
+    --violet: #7a33ff;
+    --violet-light: #b894ff;
+    --white: #ffffff;
+    --dark: #0d0d0d;
+    --gray: #1a1a1a;
+}
+
+/* ----------- NAVBAR ----------- */
+.navbar {
+    background: var(--gray);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--violet);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    background: var(--violet);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.site-title .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.site-title .subtitle {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ----------- BOUTONS ----------- */
+.btn {
+    padding: 8px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--violet);
+    color: var(--white);
     text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    transition: 0.3s;
 }
 
-header nav a:hover {
-    text-decoration: underline;
+.btn:hover {
+    background: var(--violet);
 }
 
-/* Footer */
-footer {
-    margin-top: 2rem;
-    padding: 1rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    color: #6c757d;
+.primary {
+    background: var(--violet);
+}
+
+.primary:hover {
+    background: var(--violet-light);
+}
+
+/* ----------- BARRE DE RECHERCHE ----------- */
+.search-row {
+    background: #111;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 2px solid var(--violet);
+}
+
+.select-type {
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--gray);
+    color: var(--white);
+    border: 1px solid var(--violet);
+}
+
+.search-input {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input input {
+    padding: 10px 15px;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid var(--violet);
+    background: #111;
+    color: var(--white);
+}
+
+/* ----------- PROMO BLOC ----------- */
+.promo {
+    background: var(--gray);
+    margin: 40px auto;
+    padding: 25px;
+    width: 80%;
+    border-radius: 20px;
+    border-left: 5px solid var(--violet);
+    border-right: 5px solid var(--violet);
     text-align: center;
+}
+
+.pill {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--violet);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pill:hover {
+    background: var(--violet-light);
+}
+
+/* ----------- GRID DES SÉRIES ----------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 60px;
+}
+
+.card {
+    background: var(--gray);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #222;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--violet);
+}
+
+.thumb {
+    background: #111;
+    border: 2px solid var(--violet);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--violet-light);
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+p {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+/* ----------- FOOTER ----------- */
+.footer {
+    background: var(--gray);
+    padding: 25px;
+    text-align: center;
+    border-top: 2px solid var(--violet);
+}
+
+/* ----------- RESPONSIVE ----------- */
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
