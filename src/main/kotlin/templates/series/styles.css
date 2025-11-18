@@ -1,0 +1,118 @@
+:root {
+    --violet: #6d4aff;
+    --noir: #1a1a1a;
+    --gris: #f2f2f2;
+    --blanc: #ffffff;
+}
+
+/* RESET */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--gris);
+    color: var(--noir);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--violet);
+    color: var(--blanc);
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hamburger {
+    cursor: pointer;
+    font-size: 1.8rem;
+}
+
+/* MENU */
+.menu {
+    display: none;
+    flex-direction: column;
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 15px;
+}
+
+.menu a {
+    padding: 12px 0;
+    color: var(--blanc);
+    text-decoration: none;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    width: 100%;
+    padding: 15px;
+    background: var(--blanc);
+    text-align: center;
+    border-bottom: 3px solid var(--violet);
+}
+
+.search-bar select {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* TITLE */
+.promo, .page-title, .stock-title {
+    padding: 25px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* GRID SERIES */
+.series-grid, .stock-grid, .cardlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 22px;
+    padding: 20px;
+}
+
+/* SERIES CARD */
+.series-card {
+    background: var(--blanc);
+    border-radius: 15px;
+    padding: 22px;
+    text-align: center;
+    border: 2px solid var(--violet);
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.series-card:hover {
+    transform: scale(1.03);
+}
+
+/* STOCK CARD */
+.stock-card, .pokemon-card {
+    background: var(--blanc);
+    border-radius: 14px;
+    padding: 15px;
+    border: 2px solid var(--noir);
+    box-shadow: 0 4px 8px #0003;
+}
+
+.pokemon-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 15px;
+    background: var(--violet);
+    color: var(--blanc);
+}
