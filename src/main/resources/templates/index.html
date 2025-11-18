@@ -1,66 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::content})}">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>PokeCorner - Séries Pokémon</title>
+    <link rel="stylesheet" href="/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
 
-<div th:fragment="content">
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">PokeCorner</div>
+    <nav class="navbar">
+        <a href="#">Connexion</a>
+        <a href="#">Menu</a>
+    </nav>
+</header>
 
-    <div class="promo">
-        <div>
-            <h2>Promotions du mois</h2>
-            <p>Jusqu'à -30% sur des séries exclusives.</p>
-        </div>
-        <div class="pill">Voir les offres</div>
-    </div>
-
-    <div class="grid">
-        <div class="card">
-            <div class="thumb">Flammes<br>Fantasmagoriques</div>
-            <h3>Série : Flammes Fantasmagoriques</h3>
-            <p>Cartes & extensions</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Méga<br>Évolution</div>
-            <h3>Série : Méga évolution</h3>
-            <p>Boosters & cartes rares</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Foudre<br>Noir</div>
-            <h3>Série : Foudre Noir</h3>
-            <p>Éditions spéciales</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Flamme<br>Blanche</div>
-            <h3>Série : Flamme blanche</h3>
-            <p>Collection</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Rivalités<br>Destinées</div>
-            <h3>Série : Rivalités destinées</h3>
-            <p>Decks thématiques</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Aventures<br>Ensembles</div>
-            <h3>Série : Aventures ensembles</h3>
-            <p>Sets complets</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Évolutions<br>Prismatiques</div>
-            <h3>Série : Évolutions prismatiques</h3>
-            <p>Holographiques</p>
-        </div>
-
-        <div class="card">
-            <div class="thumb">Étincelles<br>Déferlantes</div>
-            <h3>Série : Étincelles déferlantes</h3>
-            <p>Nouveautés</p>
-        </div>
-    </div>
-
+<!-- BARRE DE RECHERCHE -->
+<div class="search-bar">
+    <select>
+        <option>Choisir un type de produit</option>
+        <option>Cartes</option>
+        <option>Items</option>
+        <option>Accessoires</option>
+    </select>
+    <input type="text" placeholder="Rechercher...">
 </div>
 
+<!-- PROMOTIONS -->
+<section class="promotions">
+    <h2>Promotions du mois</h2>
+    <p>Jusqu'à -30% sur des séries exclusives.</p>
+    <button class="btn-promos">Voir les offres</button>
+</section>
+
+<!-- GRID SERIES -->
+<section class="series-grid">
+
+    <a class="serie-card" href="/series/flammes-fantasmagoriques">
+        <div class="serie-thumb">🔥</div>
+        <p class="titre">Flammes<br>Fantasmagoriques</p>
+    </a>
+
+    <a class="serie-card" href="/series/mega-evolution">
+        <div class="serie-thumb">⚡</div>
+        <p class="titre">Méga<br>Évolution</p>
+    </a>
+
+    <a class="serie-card" href="/series/foudre-noir">
+        <div class="serie-thumb">🌩️</div>
+        <p class="titre">Foudre<br>Noir</p>
+    </a>
+
+    <a class="serie-card" href="/series/flamme-blanche">
+        <div class="serie-thumb">❄️</div>
+        <p class="titre">Flamme<br>Blanche</p>
+    </a>
+
+    <a class="serie-card" href="/series/rivalites-destinees">
+        <div class="serie-thumb">⚔️</div>
+        <p class="titre">Rivalités<br>Destinées</p>
+    </a>
+
+    <a class="serie-card" href="/series/aventures-ensembles">
+        <div class="serie-thumb">🏞️</div>
+        <p class="titre">Aventures<br>Ensembles</p>
+    </a>
+
+    <a class="serie-card" href="/series/evolutions-prismatiques">
+        <div class="serie-thumb">✨</div>
+        <p class="titre">Évolutions<br>Prismatiques</p>
+    </a>
+
+    <a class="serie-card" href="/series/etincelles-deferlantes">
+        <div class="serie-thumb">⚡💥</div>
+        <p class="titre">Étincelles<br>Déferlantes</p>
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>Contact</p>
+    <p>&copy; 2025 PokeCorner</p>
+</footer>
+
+</body>
 </html>

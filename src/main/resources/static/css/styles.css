@@ -1,118 +1,137 @@
-:root {
-    --violet: #6d4aff;
-    --noir: #1a1a1a;
-    --gris: #f2f2f2;
-    --blanc: #ffffff;
-}
-
 /* RESET */
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--gris);
-    color: var(--noir);
+    padding: 0;
+    box-sizing: border-box;
+}
+    /* BODY */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
 }
 
 /* HEADER */
-header {
+.header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 12px 20px;
-    background: var(--violet);
-    color: var(--blanc);
+    align-items: center;
+    background-color: #ffcb05; /* couleur Pokémon */
+    color: #3b4cca; /* bleu foncé Pokémon */
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.logo {
-    font-size: 1.7rem;
+.header .logo {
+    font-size: 2rem;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.hamburger {
-    cursor: pointer;
-    font-size: 1.8rem;
-}
-
-/* MENU */
-.menu {
-    display: none;
-    flex-direction: column;
-    background: var(--noir);
-    color: var(--blanc);
-    padding: 15px;
-}
-
-.menu a {
-    padding: 12px 0;
-    color: var(--blanc);
+.navbar a {
+    color: #3b4cca;
     text-decoration: none;
+    margin-left: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-/* SEARCH BAR */
+.navbar a:hover {
+    color: #d32f2f; /* rouge */
+}
+
+/* BARRE DE RECHERCHE */
 .search-bar {
-    width: 100%;
-    padding: 15px;
-    background: var(--blanc);
-    text-align: center;
-    border-bottom: 3px solid var(--violet);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
 }
 
-.search-bar select {
-    padding: 10px;
+.search-bar select,
+.search-bar input {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
     font-size: 1rem;
 }
 
-/* TITLE */
-.promo, .page-title, .stock-title {
-    padding: 25px;
+/* PROMOTIONS */
+.promotions {
+    background-color: #3b4cca;
+    color: white;
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* GRID SERIES */
-.series-grid, .stock-grid, .cardlist-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 22px;
-    padding: 20px;
-}
-
-/* SERIES CARD */
-.series-card {
-    background: var(--blanc);
+    padding: 2rem 1rem;
     border-radius: 15px;
-    padding: 22px;
-    text-align: center;
-    border: 2px solid var(--violet);
-    cursor: pointer;
-    transition: transform .2s;
+    margin: 0 2rem 2rem 2rem;
 }
 
-.series-card:hover {
-    transform: scale(1.03);
+.promotions h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-/* STOCK CARD */
-.stock-card, .pokemon-card {
-    background: var(--blanc);
-    border-radius: 14px;
-    padding: 15px;
-    border: 2px solid var(--noir);
-    box-shadow: 0 4px 8px #0003;
+.promotions p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
-.pokemon-card img {
-    width: 100%;
+.btn-promos {
+    background-color: #ffcb05;
+    color: #3b4cca;
+    padding: 0.7rem 1.5rem;
+    border: none;
     border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-promos:hover {
+    transform: scale(1.05);
+}
+
+/* SERIES GRID */
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.serie-card {
+    background-color: #fff;
+    text-decoration: none;
+    color: #3b4cca;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.serie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.serie-card .serie-thumb {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.serie-card .titre {
+    font-size: 1.2rem;
+    line-height: 1.3;
 }
 
 /* FOOTER */
 footer {
-    margin-top: 40px;
+    background-color: #3b4cca;
+    color: white;
     text-align: center;
-    padding: 15px;
-    background: var(--violet);
-    color: var(--blanc);
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    font-weight: bold;
 }
