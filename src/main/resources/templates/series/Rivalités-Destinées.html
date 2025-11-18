@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial=1.0" />
+    <title>Liste des cartes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="logo" onclick="window.location.href='index.html'">PokeCorner</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<div class="menu" id="menu">
+    <a href="#">Connexion</a>
+    <a href="#">Créer un compte</a>
+    <a href="#">Contact</a>
+    <a href="#">Panier</a>
+</div>
+
+<div class="page-title">Cardlist de la série</div>
+
+<div id="cardlist" class="cardlist-grid"></div>
+
+<footer>
+    Copyright 2025 PokeCorner
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+    // Définir ici le nom EXACT de l’extension pour filtrer le CSV
+    const extensionName = "Flammes Fantasmagoriques";
+
+    loadSerie(extensionName);
+</script>
+
+</body>
+</html>
