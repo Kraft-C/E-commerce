@@ -8,7 +8,7 @@
 /* BODY */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a; /* fond sombre pour effet néon */
+    background-color: #1a1a1a;
     color: #eee;
 }
 
@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #6a0dad; /* violet principal */
+    background-color: #6a0dad;
     color: white;
     padding: 1rem 3rem;
     box-shadow: 0 0 20px #6a0dad;
@@ -46,7 +46,7 @@ body {
     text-shadow: 0 0 5px #e0d4ff, 0 0 10px #6a0dad;
 }
 
-/* BARRE DE RECHERCHE */
+/* SEARCH BAR */
 .search-bar {
     display: flex;
     justify-content: center;
@@ -77,7 +77,6 @@ body {
     box-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
     background-color: #1a1a1a;
     color: #fff;
-    padding-left: 1rem;
 }
 
 /* PROMOTIONS */
@@ -123,25 +122,30 @@ body {
 /* SERIES GRID */
 .series-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 0 2rem 2rem 2rem;
 }
 
 @media (max-width: 600px) {
     .series-grid {
-        grid-template-columns: 1fr; /* 1 carte par ligne sur mobile */
+        grid-template-columns: 1fr;
     }
 }
 
 /* SERIE CARD */
 .serie-card {
-    background-color: #1a1a1a; /* fond sombre */
+    background-color: #1a1a1a;
     border-radius: 20px;
     box-shadow: 0 0 15px #6a0dad;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.3s;
     text-decoration: none;
+    min-height: 250px;            /* <-- FIX pour uniformité */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
 .serie-card:hover {
@@ -149,21 +153,21 @@ body {
     box-shadow: 0 0 25px #e0d4ff, 0 0 50px #6a0dad;
 }
 
-/* BULLE IMAGE */
+/* IMAGE */
 .serie-thumb {
-    width: 100%;
-    height: 180px; /* Hauteur de la bulle */
-    overflow: hidden;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
 }
+.serie-thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 
 .serie-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* L'image remplit la bulle sans dépasser */
+    object-fit: cover;
     transition: transform 0.3s;
 }
 
