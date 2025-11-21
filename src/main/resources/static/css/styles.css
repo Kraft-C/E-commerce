@@ -4,11 +4,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-    /* BODY */
+
+/* BODY */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f5;
-    color: #333;
+    background-color: #1a1a1a; /* fond sombre pour effet néon */
+    color: #eee;
 }
 
 /* HEADER */
@@ -16,27 +17,33 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffcb05; /* couleur Pokémon */
-    color: #3b4cca; /* bleu foncé Pokémon */
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #6a0dad; /* violet principal */
+    color: white;
+    padding: 1rem 3rem;
+    box-shadow: 0 0 20px #6a0dad;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header .logo {
     font-size: 2rem;
     font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
 }
 
 .navbar a {
-    color: #3b4cca;
+    color: #fff;
     text-decoration: none;
-    margin-left: 1rem;
+    margin-left: 2rem;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .navbar a:hover {
-    color: #d32f2f; /* rouge */
+    color: #e0d4ff;
+    text-shadow: 0 0 5px #e0d4ff, 0 0 10px #6a0dad;
 }
 
 /* BARRE DE RECHERCHE */
@@ -45,93 +52,133 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin: 2rem 0;
+    margin: 2rem 2rem;
 }
 
 .search-bar select,
 .search-bar input {
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 0.7rem 1rem;
+    border-radius: 15px;
+    border: none;
     font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+.search-bar select {
+    width: 300px;
+    box-shadow: 0 0 10px #6a0dad, 0 0 20px #8b2be2;
+    background-color: #2e0e4a;
+    color: #fff;
+}
+
+.search-bar input {
+    flex: 1;
+    box-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
+    background-color: #1a1a1a;
+    color: #fff;
+    padding-left: 1rem;
 }
 
 /* PROMOTIONS */
 .promotions {
-    background-color: #3b4cca;
+    background: linear-gradient(135deg, #6a0dad, #8b2be2);
     color: white;
     text-align: center;
     padding: 2rem 1rem;
-    border-radius: 15px;
+    border-radius: 20px;
     margin: 0 2rem 2rem 2rem;
+    box-shadow: 0 0 20px #6a0dad, 0 0 40px #8b2be2;
 }
 
 .promotions h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px #e0d4ff;
 }
 
 .promotions p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    text-shadow: 0 0 5px #fff;
 }
 
 .btn-promos {
-    background-color: #ffcb05;
-    color: #3b4cca;
-    padding: 0.7rem 1.5rem;
+    background-color: #e0d4ff;
+    color: #6a0dad;
+    padding: 0.8rem 2rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s;
+    text-shadow: 0 0 5px #6a0dad;
+    transition: transform 0.2s, box-shadow 0.3s;
 }
 
 .btn-promos:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #e0d4ff, 0 0 30px #6a0dad;
 }
 
 /* SERIES GRID */
 .series-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne */
     gap: 1rem;
     padding: 0 2rem 2rem 2rem;
 }
 
+@media (max-width: 600px) {
+    .series-grid {
+        grid-template-columns: 1fr; /* 1 carte par ligne sur mobile */
+    }
+}
+
+/* SERIE CARD */
 .serie-card {
-    background-color: #fff;
+    background-color: #1a1a1a; /* fond sombre */
+    border-radius: 20px;
+    box-shadow: 0 0 15px #6a0dad;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.3s;
     text-decoration: none;
-    color: #3b4cca;
-    font-weight: bold;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .serie-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 0 25px #e0d4ff, 0 0 50px #6a0dad;
 }
 
-.serie-card .serie-thumb {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+/* BULLE IMAGE */
+.serie-thumb {
+    width: 100%;
+    height: 180px; /* Hauteur de la bulle */
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.serie-card .titre {
-    font-size: 1.2rem;
-    line-height: 1.3;
+.serie-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit la bulle sans dépasser */
+    transition: transform 0.3s;
+}
+
+.serie-card:hover .serie-thumb img {
+    transform: scale(1.05);
 }
 
 /* FOOTER */
 footer {
-    background-color: #3b4cca;
+    background-color: #6a0dad;
     color: white;
     text-align: center;
     padding: 1.5rem 0;
     margin-top: 2rem;
     font-weight: bold;
+    border-top: 3px solid #4b0082;
+    box-shadow: 0 0 15px #6a0dad;
 }

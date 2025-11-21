@@ -1,22 +1,27 @@
 package org.ldv.ecommerce.controller
 
 import ch.qos.logback.core.model.Model
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
 class MainController {
+
 
     // L'URL d'accueil est maintenant publique grâce à SecurityConfig
     @GetMapping("/")
     fun home(): String = "index"
 
-    // 💡 CORRECTION : Ajout de la méthode pour afficher le template de connexion
-    // Suppose que login.html se trouve dans src/main/resources/templates/pagesVisiteur/login.html
+
     @GetMapping("/e-commerce/login")
-    fun login(): String {
+    fun login(@RequestParam error: Boolean?, model: Model): String {
+        // Ajoute un attribut "error" au modèle si la requête contient une erreur
+        model.addAttribute("error", error == true)
         return "pagesVisiteur/login"
     }
+    
 
     // --- Autres pages Visiteur ---
     @GetMapping("/a-propos")
@@ -28,6 +33,7 @@ class MainController {
         // ...
         return "cartes"
     }
+
 }
 
 // Nettoyage des fonctions d'extension temporaires
