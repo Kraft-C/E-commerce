@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface UtilisateurDAO : JpaRepository<Utilisateur, Long> {
 
     fun findByEmail(email: String): Utilisateur?
-    fun saveAll(entities: List<Utilisateur>)
 
 }

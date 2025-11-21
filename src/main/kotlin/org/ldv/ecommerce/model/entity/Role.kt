@@ -15,6 +15,8 @@ class Role(
     @Column(nullable = false)
     var id: Long? = null,
 
+    // 🌟 AMÉLIORATION : Ajout des contraintes 'unique' et 'nullable'
+    @Column(nullable = false, unique = true)
     var nom: String,
 
     @OneToMany(mappedBy = "role", cascade = [CascadeType.ALL], orphanRemoval = true)

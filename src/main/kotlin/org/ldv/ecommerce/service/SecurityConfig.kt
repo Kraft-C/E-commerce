@@ -1,3 +1,5 @@
+package org.ldv.ecommerce.config
+
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -14,27 +16,38 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableMethodSecurity
 class SecurityConfig {
 
+    // 1. Bean pour l'encodage du mot de passe (Corrige la première erreur)
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            //Restriction des endpoints en fonction du role
+            // Restriction des endpoints en fonction du rôle
             .authorizeHttpRequests {
-                it.requestMatchers("/e-commerce", "/e-commerce/register", "/e-commerce/login", "/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
-                    // Autoriser l'accès pour les utilisateurs avec le rôle "ADMIN" à /admin/**
+                // 2. CORRECTION : Ajout de "/" pour rendre la page d'accueil publique
+                it.requestMatchers(
+                    "/", // Page d'accueil (index.html)
+                    "/e-commerce",
+                    "/e-commerce/register",
+                    "/e-commerce/login",
+                    "/css/**", "/js/**", "/img/**", "/favicon.ico"
+                ).permitAll()
+
+                    // Rôles spécifiques
                     .requestMatchers("/e-commerce/admin/**").hasRole("ADMIN")
-                    // Autoriser l'accès pour les utilisateurs avec le rôle "CLIENT" à /client/**
                     .requestMatchers("/e-commerce/client/**").hasRole("CLIENT")
+
                     // Toutes les autres requêtes doivent être authentifiées
                     .anyRequest().authenticated()
-
             }
+
             // Configuration du formulaire de connexion
             .formLogin { form: FormLoginConfigurer<HttpSecurity?> ->
                 form
-                    .loginPage("/e-commerce/login").defaultSuccessUrl("/e-commerce/profil").failureUrl("/e-commerce/login?error=true")
+                    .loginPage("/e-commerce/login")
+                    .defaultSuccessUrl("/e-commerce/profil")
+                    .failureUrl("/e-commerce/login?error=true")
                     .permitAll()
             }
 
@@ -42,7 +55,8 @@ class SecurityConfig {
             .logout { logout: LogoutConfigurer<HttpSecurity?> ->
                 logout
                     .logoutUrl("/e-commerce/logout")
-                    .loginProcessingUrl("/e-commerce/login")
+                    .logoutSuccessUrl("/e-commerce/login?logout")
+                    .permitAll()
             }
 
         return http.build()
@@ -53,5 +67,3 @@ class SecurityConfig {
         return config.authenticationManager
     }
 }
-
-private fun LogoutConfigurer<HttpSecurity?>.loginProcessingUrl(string: String) {}

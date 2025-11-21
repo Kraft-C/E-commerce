@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+</head>
+<body>
+<h1>Page de Connexion</h1>
+
+<form method="POST" th:action="@{/e-commerce/login}">
+    <div>
+        <label for="username">Email:</label>
+        <input type="email" id="username" name="username" required>
+    </div>
+    <div>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+        <button type="submit">Se connecter</button>
+    </div>
+
+    <div th:if="${param.error}" style="color: red;">
+        Email ou mot de passe invalide.
+    </div>
+</form>
+</body>
+</html>
