@@ -1,54 +1,24 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body>
-<h1>Page de Connexion</h1>
-
-<form method="POST" th:action="@{/e-commerce/login}">
-    <div>
-        <label for="username">Email:</label>
-        <input type="email" id="username" name="username" required>
+<body class="login-page">
+<div class="login-container">
+    <div class="logo">
+        <img src="/img/logo1.png" alt="PokeCorner Logo">
     </div>
-
-    Créer ou modifier votre page login.html :
-    Vous pouvez garder votre formulaire mais dans ce cas ajouter :
-    L’attribut action du form
-    Les attributs name des inputs (username et password)
-
-
-    Voici un exemple :
-    <div class="col-8 col-lg-6 mx-auto p-2  mt-3">
-        <form action="/e-kommerce/login" method="post">
-            <h1>Login</h1>
-            <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
-            <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>
-            <div class="mb-3">
-                <label for="username">Email</label>
-                <input required class="form-control" id="username" name="username" type="text">
-            </div>
-            <div class="mb-3">
-                <label for="password">Mdp</label>
-                <input required class="form-control" id="password" name="password" type="password">
-            </div>
-            <button class="btn btn-primary">Envoyer</button>
-        </form>
-    </div>
-
-
-    <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
+    <h2>Connexion</h2>
+    <form>
+        <input type="text" placeholder="Nom d'utilisateur" required>
+        <input type="password" placeholder="Mot de passe" required>
         <button type="submit">Se connecter</button>
+    </form>
+    <div class="links">
+        <a href="#">Mot de passe oublié ?</a>
+        <a href="#">S'inscrire</a>
     </div>
-
-    <div th:if="${param.error}" style="color: red;">
-        Email ou mot de passe invalide.
-    </div>
-</form>
+</div>
 </body>
 </html>

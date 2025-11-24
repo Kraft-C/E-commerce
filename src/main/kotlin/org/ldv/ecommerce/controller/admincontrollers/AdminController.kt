@@ -11,9 +11,9 @@ class AdminController (
     val categorieDAO: CategorieDAO
 )
 
-
 @Controller
 public class AdminControllerController {
+
 
     @GetMapping("/E-commerce/admin/")
     fun adminCategories() = "admin"
@@ -27,7 +27,6 @@ public class AdminControllerController {
     }
 
 }
-
 private fun Nothing?.findAll() {
     TODO("Not yet implemented")
 }

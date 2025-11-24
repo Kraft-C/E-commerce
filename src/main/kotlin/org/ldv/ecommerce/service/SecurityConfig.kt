@@ -67,3 +67,4 @@ class SecurityConfig {
         return config.authenticationManager
     }
 }
+

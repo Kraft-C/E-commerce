@@ -12,26 +12,31 @@ body {
     color: #eee;
 }
 
-/* HEADER */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #6a0dad;
     color: white;
-    padding: 1rem 3rem;
+    padding: 0.5rem 2rem; /* 🟣 hauteur réduite : avant c’était 1rem */
     box-shadow: 0 0 20px #6a0dad;
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%; /* 🟣 header pleine largeur */
 }
+
 
 .header .logo {
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 1px;
     text-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
+    margin-right: 2rem;      /* espace entre le logo et la navbar */
 }
+
+
+
 
 .navbar a {
     color: #fff;
@@ -119,12 +124,19 @@ body {
     box-shadow: 0 0 15px #e0d4ff, 0 0 30px #6a0dad;
 }
 
-/* SERIES GRID */
+/* SERIES GRID — 3 cartes par ligne */
 .series-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
     padding: 0 2rem 2rem 2rem;
+}
+
+/* Responsive correct */
+@media (max-width: 900px) {
+    .series-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 600px) {
@@ -133,47 +145,63 @@ body {
     }
 }
 
-/* SERIE CARD */
+/* SERIE CARD — taille réduite pour tenir à 3 par ligne */
 .serie-card {
     background-color: #1a1a1a;
-    border-radius: 20px;
+    border-radius: 18px;
     box-shadow: 0 0 15px #6a0dad;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: transform 0.25s, box-shadow 0.25s;
     text-decoration: none;
-    min-height: 250px;            /* <-- FIX pour uniformité */
+    height: 200px;               /* Taille FIXE → évite les débordements */
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
     flex-direction: column;
 }
 
 .serie-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.03);
     box-shadow: 0 0 25px #e0d4ff, 0 0 50px #6a0dad;
 }
 
-/* IMAGE */
-.serie-thumb {
-    height: auto;
+/* SERIE CARD */
+.serie-card {
+    background-color: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #6a0dad;
+    transition: transform 0.2s, box-shadow 0.3s;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
-.serie-thumb img {
+
+/* IMAGE — centrée + agrandie */
+.serie-thumb {
     width: 100%;
+    height: 170px;              /* hauteur augmentée un peu */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.serie-thumb img {
+    width: 105%;                /* réduit un peu la taille */
     height: auto;
     object-fit: contain;
-}
-
-
-.serie-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
 }
 
 .serie-card:hover .serie-thumb img {
-    transform: scale(1.05);
+    transform: scale(1.10);     /* hover légèrement réduit aussi */
 }
+
+
+
 
 /* FOOTER */
 footer {
@@ -186,3 +214,160 @@ footer {
     border-top: 3px solid #4b0082;
     box-shadow: 0 0 15px #6a0dad;
 }
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Page Login*/
+
+/* FOND STYLÉ POUR LOGIN */
+body.login-page {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a0a2e, #3a0e6f);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Cercles lumineux animés */
+body.login-page::before,
+body.login-page::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(224, 212, 255, 0.15);
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    animation: moveCircle 10s linear infinite alternate;
+    z-index: 0;
+}
+
+body.login-page::after {
+    width: 300px;
+    height: 300px;
+    top: auto;
+    bottom: -50px;
+    left: auto;
+    right: -50px;
+    background: rgba(139, 43, 226, 0.15);
+    animation-duration: 12s;
+}
+
+@keyframes moveCircle {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(50px, 50px) scale(1.2); }
+    100% { transform: translate(0,0) scale(1); }
+}
+
+/* CONTAINER FORMULAIRE */
+.login-container {
+    position: relative;
+    z-index: 1; /* au-dessus des cercles */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    width: 350px;
+    background: rgba(30, 0, 50, 0.85); /* overlay semi-transparent */
+    border-radius: 20px;
+    box-shadow: 0 0 25px #6a0dad, 0 0 50px #8b2be2;
+    color: #fff;
+}
+
+/* LOGO */
+.login-container .logo {
+    font-size: 8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
+    margin-bottom: 1rem;
+}
+
+/* TITRE */
+.login-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #e0d4ff, 0 0 20px #6a0dad;
+}
+
+/* FORMULAIRE */
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+/* CHAMPS INPUT */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 0.8rem 1rem;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #6a0dad, 0 0 20px #8b2be2;
+    background-color: #2e0e4a;
+    color: #fff;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    box-shadow: 0 0 15px #e0d4ff, 0 0 25px #6a0dad;
+    transform: scale(1.02);
+}
+
+/* BOUTON */
+.login-container button {
+    padding: 0.8rem 1rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #e0d4ff;
+    color: #6a0dad;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-shadow: 0 0 5px #6a0dad;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.login-container button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #e0d4ff, 0 0 30px #6a0dad;
+}
+
+/* LIENS */
+.login-container .links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.login-container .links a {
+    color: #fff; /* texte en blanc */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-container .links a:hover {
+    color: #e0d4ff;
+}
+
+
+
+
+
