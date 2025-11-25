@@ -16,45 +16,37 @@ import org.springframework.security.web.SecurityFilterChain
 @EnableMethodSecurity
 class SecurityConfig {
 
-    // 1. Bean pour l'encodage du mot de passe (Corrige la première erreur)
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            // Restriction des endpoints en fonction du rôle
             .authorizeHttpRequests {
-                // 2. CORRECTION : Ajout de "/" pour rendre la page d'accueil publique
                 it.requestMatchers(
-                    "/", // Page d'accueil (index.html)
+                    "/",
                     "/e-commerce",
                     "/e-commerce/register",
                     "/e-commerce/login",
                     "/css/**", "/js/**", "/img/**", "/favicon.ico"
                 ).permitAll()
-
-                    // Rôles spécifiques
                     .requestMatchers("/e-commerce/admin/**").hasRole("ADMIN")
                     .requestMatchers("/e-commerce/client/**").hasRole("CLIENT")
-
-                    // Toutes les autres requêtes doivent être authentifiées
                     .anyRequest().authenticated()
             }
-
-            // Configuration du formulaire de connexion
-            .formLogin { form: FormLoginConfigurer<HttpSecurity?> ->
-                form
+            .formLogin {
+                it
                     .loginPage("/e-commerce/login")
-                    .defaultSuccessUrl("/e-commerce/profil")
+                    .loginProcessingUrl("/e-commerce/login")
+                    .defaultSuccessUrl("/", true) // redirection vers index.html
                     .failureUrl("/e-commerce/login?error=true")
                     .permitAll()
             }
 
-            // Configuration du mécanisme de déconnexion
-            .logout { logout: LogoutConfigurer<HttpSecurity?> ->
-                logout
-                    .logoutUrl("/e-commerce/logout")
+
+
+            .logout {
+                it.logoutUrl("/e-commerce/logout")
                     .logoutSuccessUrl("/e-commerce/login?logout")
                     .permitAll()
             }
@@ -67,4 +59,5 @@ class SecurityConfig {
         return config.authenticationManager
     }
 }
+
 

@@ -1,4 +1,4 @@
-package com.example.votreProjet.controller;
+package org.ldv.ecommerce.controller.admincontrollers
 
 import org.ldv.ecommerce.model.dao.CategorieDAO
 import org.springframework.stereotype.Controller;
@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 class AdminController (
     val categorieDAO: CategorieDAO
 )
-
-@Controller
-public class AdminControllerController {
+{
 
 
     @GetMapping("/E-commerce/admin/")
@@ -20,13 +18,11 @@ public class AdminControllerController {
 
     @GetMapping("/e-commerce/admin/categories")
     fun index(model: Model):String {
-        val categorieDAO = null
+
         val categories = categorieDAO.findAll()
         model.addAttribute("categories", categories)
         return "pageAdmin/categorie/index"
     }
 
 }
-private fun Nothing?.findAll() {
-    TODO("Not yet implemented")
-}
+
